@@ -8,14 +8,11 @@ var particles = [];
 var pool = [];
 
 var demo = Sketch.create({
-    container: document.getElementById( 'container' )
-});
-
+    container: document.getElementById( 'container' )});
 demo.setup = function() {
 
     // Set off some initial particles.
     var i, x, y;
-
     for ( i = 0; i < 20; i++ ) {
         x = ( demo.width * 0.5 ) + random( -100, 100 );
         y = ( demo.height * 0.5 ) + random( -100, 100 );
@@ -66,16 +63,31 @@ demo.draw = function() {
     }
 };
 
+// demo.mousemove = function(e) {
+//     var particle, theta, force, touch, max, i, j, n;
+//     for ( i = 0, n = demo.touches.length; i < n; i++ ) {
+
+//         touch = demo.touches[i], max = random( 1, 4 );
+//         for ( j = 0; j < max; j++ ) {
+//           demo.spawn( touch.x, touch.y );
+//         }
+//     }
+// };
 demo.mousemove = function() {
 
-    var particle, theta, force, touch, max, i, j, n;
+                for ( var i = demo.touches.length - 1, touch; i >= 0; i-- ) {
+                    console.log("moving");
+                    touch = demo.touches[i];
 
-    for ( i = 0, n = demo.touches.length; i < n; i++ ) {
+                    demo.lineCap = 'round';
+                    demo.lineJoin = 'round';
+                    demo.fillStyle = demo.strokeStyle = '#ffffff';
+                    demo.lineWidth = 4;
 
-        touch = demo.touches[i], max = random( 1, 4 );
-        for ( j = 0; j < max; j++ ) {
-          demo.spawn( touch.x, touch.y );
-        }
-    }
-};
+                    demo.beginPath();
+                    demo.moveTo( touch.ox, touch.oy );
+                    demo.lineTo( touch.x, touch.y );
+                    demo.stroke();
+                }
+            };
 }
