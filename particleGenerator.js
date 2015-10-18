@@ -1,4 +1,7 @@
-var MAX_PARTICLES = 280;
+function load()
+{
+
+var MAX_PARTICLES = 50;
 var COLOURS = [ '#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900', '#FF4E50', '#F9D423' ];
 
 var particles = [];
@@ -26,14 +29,14 @@ demo.spawn = function( x, y ) {
         pool.push( particles.shift() );
 
     particle = pool.length ? pool.pop() : new Particle();
-    particle.init( x, y, random( 5, 40 ) );
+    particle.init( x, y, random( 2, 4 ) );
 
-    particle.wander = random( 0.5, 2.0 );
+    particle.wander = random( 0.5, 1.0 );
     particle.color = random( COLOURS );
     particle.drag = random( 0.9, 0.99 );
 
     theta = random( TWO_PI );
-    force = random( 2, 8 );
+    force = random( 1, 5 );
 
     particle.vx = sin( theta ) * force;
     particle.vy = cos( theta ) * force;
@@ -73,6 +76,6 @@ demo.mousemove = function() {
         for ( j = 0; j < max; j++ ) {
           demo.spawn( touch.x, touch.y );
         }
-
     }
 };
+}
