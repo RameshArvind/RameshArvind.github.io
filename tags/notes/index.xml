@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Ramesh&#39;s Blog</title>
-    <link>http://RameshArvind.github.io/posts/</link>
-    <description>Recent content in Posts on Ramesh&#39;s Blog</description>
+    <title>Notes on Ramesh&#39;s Blog</title>
+    <link>http://RameshArvind.github.io/tags/notes/</link>
+    <description>Recent content in Notes on Ramesh&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 22 Dec 2018 05:31:27 +0530</lastBuildDate>
     
-	<atom:link href="http://RameshArvind.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://RameshArvind.github.io/tags/notes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,16 +20,6 @@
       <description>Preface All of the content here is to be a summary/notes for the multi-armed bandits chapter in the 2nd edition of the book Reinforcement Learning: An Introduction by Sutton and Barto.
 What is the MAB problem? Consider k different slot machines each with different payouts and probabilities of winning. Our goal is to maximize winnings over it without any prior knowledge of the machines.
 Think about being in a casino with no one around except you.</description>
-    </item>
-    
-    <item>
-      <title>First Post</title>
-      <link>http://RameshArvind.github.io/posts/first-post/</link>
-      <pubDate>Thu, 20 Dec 2018 04:41:02 +0530</pubDate>
-      
-      <guid>http://RameshArvind.github.io/posts/first-post/</guid>
-      <description>Why even blog? So then, this is probably going to be a pretty boring intro to what I&amp;rsquo;m trying to get at by blogging.
-I spend a lot time on the internet, it&amp;rsquo;s actually more surprising when I don&amp;rsquo;t find myself on it. I&amp;rsquo;m easily distracted when I&amp;rsquo;m trying to be productive and have a hard time trying to focus. There are specific things I&amp;rsquo;d like to achieve by blogging</description>
     </item>
     
   </channel>

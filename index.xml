@@ -6,10 +6,21 @@
     <description>Recent content on Ramesh&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Dec 2018 04:41:02 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 22 Dec 2018 05:31:27 +0530</lastBuildDate>
     
 	<atom:link href="http://RameshArvind.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Multi-Armed Bandits</title>
+      <link>http://RameshArvind.github.io/posts/multi-armed-bandits/</link>
+      <pubDate>Sat, 22 Dec 2018 05:31:27 +0530</pubDate>
+      
+      <guid>http://RameshArvind.github.io/posts/multi-armed-bandits/</guid>
+      <description>Preface All of the content here is to be a summary/notes for the multi-armed bandits chapter in the 2nd edition of the book Reinforcement Learning: An Introduction by Sutton and Barto.
+What is the MAB problem? Consider k different slot machines each with different payouts and probabilities of winning. Our goal is to maximize winnings over it without any prior knowledge of the machines.
+Think about being in a casino with no one around except you.</description>
+    </item>
     
     <item>
       <title>First Post</title>

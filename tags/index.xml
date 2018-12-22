@@ -6,9 +6,37 @@
     <description>Recent content in Tags on Ramesh&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 22 Dec 2018 05:31:27 +0530</lastBuildDate>
     
 	<atom:link href="http://RameshArvind.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Multi Armed Bandits</title>
+      <link>http://RameshArvind.github.io/tags/multi-armed-bandits/</link>
+      <pubDate>Sat, 22 Dec 2018 05:31:27 +0530</pubDate>
+      
+      <guid>http://RameshArvind.github.io/tags/multi-armed-bandits/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notes</title>
+      <link>http://RameshArvind.github.io/tags/notes/</link>
+      <pubDate>Sat, 22 Dec 2018 05:31:27 +0530</pubDate>
+      
+      <guid>http://RameshArvind.github.io/tags/notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sutton and Barto</title>
+      <link>http://RameshArvind.github.io/tags/sutton-and-barto/</link>
+      <pubDate>Sat, 22 Dec 2018 05:31:27 +0530</pubDate>
+      
+      <guid>http://RameshArvind.github.io/tags/sutton-and-barto/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
