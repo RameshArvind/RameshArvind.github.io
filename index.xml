@@ -13,10 +13,10 @@
     
     <item>
       <title>Multi-Armed Bandits</title>
-      <link>http://RameshArvind.github.io/posts/multi-armed-bandits/</link>
+      <link>http://RameshArvind.github.io/posts/reinforcement-learning/multi-armed-bandits/</link>
       <pubDate>Sat, 22 Dec 2018 05:31:27 +0530</pubDate>
       
-      <guid>http://RameshArvind.github.io/posts/multi-armed-bandits/</guid>
+      <guid>http://RameshArvind.github.io/posts/reinforcement-learning/multi-armed-bandits/</guid>
       <description>Preface All of the content here is to be a summary/notes for the multi-armed bandits chapter in the 2nd edition of the book Reinforcement Learning: An Introduction by Sutton and Barto.
 What is the MAB problem? Consider k different slot machines each with different payouts and probabilities of winning. Our goal is to maximize winnings over it without any prior knowledge of the machines.
 Think about being in a casino with no one around except you.</description>
@@ -24,10 +24,10 @@ Think about being in a casino with no one around except you.</description>
     
     <item>
       <title>First Post</title>
-      <link>http://RameshArvind.github.io/posts/first-post/</link>
+      <link>http://RameshArvind.github.io/posts/personal/first-post/</link>
       <pubDate>Thu, 20 Dec 2018 04:41:02 +0530</pubDate>
       
-      <guid>http://RameshArvind.github.io/posts/first-post/</guid>
+      <guid>http://RameshArvind.github.io/posts/personal/first-post/</guid>
       <description>Why even blog? So then, this is probably going to be a pretty boring intro to what I&amp;rsquo;m trying to get at by blogging.
 I spend a lot time on the internet, it&amp;rsquo;s actually more surprising when I don&amp;rsquo;t find myself on it. I&amp;rsquo;m easily distracted when I&amp;rsquo;m trying to be productive and have a hard time trying to focus. There are specific things I&amp;rsquo;d like to achieve by blogging</description>
     </item>
@@ -39,7 +39,7 @@ I spend a lot time on the internet, it&amp;rsquo;s actually more surprising when
       
       <guid>http://RameshArvind.github.io/about/</guid>
       <description>I&amp;rsquo;m Ravi Ramesh Arvind. You can find a better description on my Linkedin if you&amp;rsquo;re looking to hire me.
-What am I doing?  Trying to make sense of things like AlphaGo, Code2Vec and Neural Turing Machines. Pursuing my master&amp;rsquo;s degree from Georgia Tech via its Online Master&amp;rsquo;s in Computer Science program.  Work Experience  Fullstack engineer at Endurance India between 2016-2018, working mostly on React/Node.js/Java Stack. Interned at Morgan Stanley working on a visualization platform to identify performance bottlenecks.</description>
+What am I doing?  Machine Learning Fellow at fellowship.ai Pursuing my master&amp;rsquo;s degree from Georgia Tech via its Online Master&amp;rsquo;s in Computer Science program.  Past Work Experience  Fullstack engineer at Endurance India between 2016-2018, working mostly on React/Node.js/Java Stack. Interned at Morgan Stanley working on a visualization platform to identify performance bottlenecks.</description>
     </item>
     
   </channel>

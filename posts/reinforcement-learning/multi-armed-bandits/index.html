@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <title>Multi-Armed Bandits - Ramesh&#39;s Blog</title>
+  <meta content='Multi-Armed Bandits - Ramesh&#39;s Blog' property='title' />
+  <meta content='Multi-Armed Bandits - Ramesh&#39;s Blog' property='og:title' />
+
+
+<meta property="og:description" content="Preface All of the content here is to be a summary/notes for the multi-armed bandits chapter in the 2nd edition of the book Reinforcement Learning: An Introduction by Sutton and Barto.
+What is the MAB problem? Consider k different slot machines each with different payouts and probabilities of winning. Our goal is to maximize winnings over it without any prior knowledge of the machines.
+Think about being in a casino with no one around except you." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://RameshArvind.github.io/posts/reinforcement-learning/multi-armed-bandits/" />
+
+
+<meta property="article:published_time" content="2018-12-22T05:31:27&#43;05:30"/>
+
+<meta property="article:modified_time" content="2018-12-22T05:31:27&#43;05:30"/>
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52" />
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+<style type="text/css">/*https://coolors.co/afd5aa-f0f2ef-a69f98-3d3d3d-8c6057*/
+:root {
+  --main-color: #8C6056; 
+  --secondary-color: #AFD5AA;
+  --logo-text-color: #fff;
+  --body-text-color: #3d3d3d;
+  --heading-text-color: #383838;
+  --background-color: #fff;
+}</style>
+<link href='/css/tachyons.min.css' rel="stylesheet">
+<link href='/css/styles.css' rel="stylesheet">
+<link rel="stylesheet" href="/css/custom.css">
+
+
+<link rel="icon" 
+ 
+  href='/favicon.ico'
+
+type="image/x-icon"/>
+
+<link href='/feed.xml' rel="alternate" type="application/atom+xml" title="Ramesh&#39;s Blog" />
+
+</head>
+<body class="global-font">
+  <nav class=" flex-ns justify-between border-box pa3 pl3-l pr2-l mt1 mt0-ns" id="navbar">
+  <div class="flex">
+    <a class="f4 fw6 ttu no-underline dim bg-main-color pv1 ph2 br2" id="site-title" href='/' title="Home">Ramesh&#39;s Blog</a>
+  </div>
+  
+  <div class=" flex-ns mt2 mt0-ns pv1">
+    
+      <a class="link dim dark-gray f6 dib mr2 mr3-l ttu tracked" href='/about/' title="About">About</a>
+    
+      <a class="link dim dark-gray f6 dib mr2 mr3-l ttu tracked" href='https://github.com/RameshArvind/' title="Github">Github</a>
+    
+      <a class="link dim dark-gray f6 dib mr2 mr3-l ttu tracked" href='https://www.linkedin.com/in/ramesharvind1994/' title="Linkedin">Linkedin</a>
+    
+      <a class="link dim dark-gray f6 dib mr2 mr3-l ttu tracked" href='https://twitter.com/RameshArv1nd' title="Twitter">Twitter</a>
+    
+  </div>
+  
+</nav>
+  
+<main class="center mv4 content-width ph3">
+  <div class="f3 fw6 heading-color heading-font post-title">Multi-Armed Bandits</div>
+  <p class="silver f6 mt1 mb4 post-meta">
+    <time>22 Dec 2018</time> 
+     | 
+    
+    
+    tags: [ <a href='/tags/multi-armed-bandits' class="link silver">Multi-Armed Bandits</a> <a href='/tags/sutton-and-barto' class="link silver">Sutton and Barto</a> <a href='/tags/notes' class="link silver">notes</a>  ]
+    
+  </p>
+  <div class="lh-copy post-content">
+
+<h2 id="preface">Preface</h2>
+
+<p>All of the content here is to be a summary/notes for the multi-armed bandits chapter in the 2nd edition of the book <strong><em>Reinforcement Learning: An Introduction</em></strong> by Sutton and Barto.</p>
+
+<h2 id="what-is-the-mab-problem">What is the MAB problem?</h2>
+
+<p>Consider <em>k</em> different slot machines each with different payouts and probabilities of winning. Our goal is to maximize winnings over it without any prior knowledge of the machines.</p>
+
+<p>Think about being in a casino with no one around except you. You&rsquo;re given 1000 attempts at various slot machines but you have no idea about their dynamics. Naturally you&rsquo;d want to maximize your profit.</p>
+
+<ul>
+<li>Let&rsquo;s say you start off randomly going around trying different machines and note the money you&rsquo;ve made from each attempt. You do this to gauge the amount of money you can make off of each machine. This is called <strong>exploration</strong>.</li>
+<li>Now after a while you&rsquo;ll want to maximize amount of money and use the machine which has best odds based on your observations. This is called <strong>exploitation</strong>.</li>
+</ul>
+
+<h2 id="exploration-exploitation-dilemma">Exploration/Exploitation Dilemma</h2>
+
+<p>When do you decide to explore more versus exploting already know information?</p>
+
+<p>Determining the balance is broadly based on the estimates we&rsquo;ve made so far, uncertainties and the amount of turns we have left. There are sophisticated methods which can be applied, but it makes strong assumptions on the problem which are impractical.</p>
+
+<p>In any case we have to determine the value of each machine. In our above scenario a natural estimate is to just average the money earned from each machine as its value.</p>
+
+<p>$$\Large Q_t(a) = \frac {sum\ of\ rewards\ when\ a\ taken\ prior\ to\ t} {number\ of\ times\ a\ taken\ prior\ to\ t} = \frac {\sum_{t=1}^{t-1} R_i.1_{A_i=a}} {\sum_{t=1}^{t-1}1_{A_i=a}}$$</p>
+
+<p><strong>1</strong> is a function which equates to value 1 if its predicate is satisfied . In our case its if action is equal to <em>a</em>.</p>
+
+<p>This approach is called <em>sample-average</em>, and converges to the true value of the action given large amount of samples.</p>
+
+<p>We can perform the exploitation part of our strategy by a greedy selection of actions based on the sample-average value we just discussed.</p>
+
+<p>$$
+\Large A_t = argmax_aQ_t(a)
+$$</p>
+
+<p>By following this equation for action selection, we maximize immediate profit. But in order to explore other machines once in a while, we change this step slightly. We introduce a small probability $\Large \epsilon$ where select an action randomly from all actions independent of the current greedy action. This is known as $\large \epsilon\ greedy$ action selection rule.</p>
+
+<h3 id="exercise-2-1">Exercise 2.1</h3>
+
+<blockquote>
+<p>In ε-greedy action selection, for the case of two actions and ε = 0.5, what is the probability that the greedy action is selected?</p>
+</blockquote>
+
+<p>Here since $\large \epsilon$ is 0.5, chance of selecting the greedy action is 1 - $\large \epsilon$ = 0.5</p>
+
+<h3 id="exercise-2-2">Exercise 2.2</h3>
+
+<blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">Timestamp</th>
+<th align="center">Action</th>
+<th align="center">Reward</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+
+<tr>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+
+<tr>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+
+<p>Consider the above bandit actions with 4 actions using ε-greedy selection. Where did the exploratory action take place definitely? Where did it possibly occur?</p>
+</blockquote>
+
+<p>Here in timestep 2, the exploratory action occurred since it has observed that action 1 yielded reward 1 which is greater than 0 for the other actions. It definitely occured at timestep 5 since the reward is 0 and it wasn&rsquo;t the greedy choice of action 2.</p>
+
+<h2 id="epsilon-greedy-vs-greedy">Epsilon Greedy vs Greedy</h2>
+
+<p>Epsilon greedy isn&rsquo;t always the clear choice for an action selection strategy. It&rsquo;s based upon the variance in the rewards. The larger the variance, the better epsilon greedy fares. In case the variance is zero, then the greedy selection fares better after exploring each action once.</p>
+
+<p>The other section where epsilon greedy fares better is in non-stationary rewards i.e rewards that change over time. Even in this case, the algorithm can keep up.</p>
+
+<h2 id="efficient-way-of-computing-sample-averages">Efficient way of computing sample-averages</h2>
+
+<p>As we have seen, computing the sample average involves a summation over timesteps. Recalculating it each time for an update is inefficient.</p>
+
+<p>There is an incremental version of the same formula used earlier which requires constant memory.</p>
+
+<p>$$
+\Large Q_{n+1} = Q_n + \frac{1}{n} \Bigl[R_n - Q_n\Bigr]
+$$</p>
+
+<p>The equation above can be generalized to an update rule of the form</p>
+
+<p>$$\large NewEstimate \leftarrow OldEstimate + StepSize\Bigl[Target - OldEstimate\Bigr]$$</p>
+
+<h2 id="nonstationary-rewards">Nonstationary Rewards</h2>
+
+<p>We mentioned nonstationary rewards i.e reward probabilities that change over time. In these situations it makes more sense to weigh the recent rewards more than long term rewards. One way to do this is to keep a constant step-size $\large \alpha$ instead of $\large 1/n$</p>
+
+<p>$$\Large Q_{n+1} = Q_n + \alpha \Bigl[R_n - Q_n\Bigr]$$</p>
+
+<p>This is known as <em>exponential recency-weighted average</em> as the rewards from the past are considered in exponentially decreasing weightage.</p>
+
+<h2 id="initial-values-for-q-n">Initial values for $Q_n$</h2>
+
+<p>In a sense $Q_n(a)$ depends on what initial values we set at the first timestep for the actions. Even if we set all of them to zero, it is still influencing what the future values become. It&rsquo;s effect reduces as we increase the number of timesteps and is usually not a problem.</p>
+
+<p>But we can take advantage of this bias and use it to supply information to the function with estimates of the rewards. This allows us to design a fully greedy system provided we set the rewards to a &ldquo;large&rdquo; value to being with. It causes the system to try an action first and once it sees that the rewards was lower than expected, it will explore another action. This way it is in a constant state of exploring until it converges to the true reward values.</p>
+
+<figure>
+    <img src="/greedy-vs-exploration-based-on-initial-values.png"
+         alt="From Reinforcement Learning: An Introduction, Page 27 by Sutton and Barto"/> <figcaption>
+            <h4>Greedy vs $\large\epsilon$-Greedy with large initial values.</h4><p>From Reinforcement Learning: An Introduction, Page 27 by Sutton and Barto</p>
+        </figcaption>
+</figure>
+
+
+<p>We can see that the greedy version converges faster than the $\large\epsilon$-greedy even though it is just acting greedily. The constant updates to rewards causes it to explore more.</p>
+
+<p>This technique works well for stationary problems (environment doesn&rsquo;t change its rewards over time), but for non-stationary it is only a temporary boost to exploration.</p>
+
+<h2 id="upper-confidence-bound-action-selection">Upper-Confidence-Bound Action Selection</h2>
+
+<p>$\large\epsilon$-greedy still has a problem we haven&rsquo;t considered. It picks the exploratory action at random, paying no heed to whether it has been explored already or not.</p>
+
+<p>Instead we would pick actions to explore based on how uncertain we are of their values i.e based how often we have already explored them. One way of doing this is via this form for action selection</p>
+
+<p>$$\large A_t = argmax_a \Bigl[Q_t(a) + c\sqrt{\frac{\ln(t)}{N_t(a)}}\Bigr]$$</p>
+
+<p>Instead of exploring randomly, we pick the action based upon two parts</p>
+
+<ul>
+<li>The current reward value $Q_t(a)$</li>
+<li>The square root term $c\sqrt{\frac{\ln(t)}{N_t(a)}}$</li>
+</ul>
+
+<p>The exploration aspect comes from the square-root term where $\ln(t)$ is the natural logarithm of the number of time steps taken till now, denominator $N_t(a)$ the number of times the action has been explored and $c$ controls the degree of exploration. This way less-explored actions will be selected more often. If $N_t(a) = 0$ then it will be chosen over other actions.</p>
+
+<figure>
+    <img src="/ucb-vs-epsilon.png"
+         alt="From Reinforcement Learning: An Introduction, Page 28 by Sutton and Barto."/> <figcaption>
+            <h4>UCB vs $\large\epsilon$-Greedy.</h4><p>From Reinforcement Learning: An Introduction, Page 28 by Sutton and Barto.</p>
+        </figcaption>
+</figure>
+
+
+<h2 id="gradient-bandit-algorithms">Gradient Bandit Algorithms</h2>
+
+<p>This is a different approach to action selection where instead of selecting an action based on maximizing reward values, we instead just define a preference for what action we&rsquo;d like to perform. Its sort of like sorting all the actions based on preference and for each timestep choose the highest one. The preference is given by a function $H_t(a)$ and action selection is made via a softmax function:</p>
+
+<p>$$Probability\ of\ choosing\ (A_t = a)\ from\ k\ actions= \frac{e^{H_t(a)}}{\sum\limits_{b=1}^{k} e^{H_t(b)}} = \pi_t(a)$$</p>
+
+<p>The initial values for $H_t(a)$ is 0 for all actions $a$.</p>
+
+<p>The update rule for the preferences is given by the following equations</p>
+
+<ul>
+<li>$H_{t+1}(A_t) = H_t(A_t) + \alpha(R_t - \bar{R}_t)(1 - \pi_t(A_t))$ for the current action taken $A_t$</li>
+<li>$H_{t+1}(a) = H_t(a) - \alpha(R_t - \bar{R}_t)\pi_t(a)$ for all actions $a \neq A_t$</li>
+</ul>
+
+<p>Here $\alpha$ is the <em>step-size</em> parameter and $\bar{R}_t$ is the average of the rewards computed incrementally by the formula from earlier. Note that this average reward is independent of the action chosen.</p>
+
+<p>Also we can substitute $\bar{R}_t$ with any constant or term that does not depend on the selected action and the algorithm will still converge to optimal values.</p>
+
+<h2 id="associative-search-contextual-bandits">Associative Search (Contextual Bandits)</h2>
+
+<p>Consider our casino problem again. First there were just a bunch of slot machines and our goal was to find the best machine as soon as possible and maximize our profit.</p>
+
+<p>Let&rsquo;s add another dimension to the problem. Let&rsquo;s say the colors of all the machines change after every action you take. On every color change, the reward functions associated with the slot machines change accordingly. This way instead of one k-bandit problem, you have multiple k-bandit problems to solve. We&rsquo;ll need different collections of $Q_t(a)$ ( or $H_t(a)$) for each colored k-bandit problem.</p>
+
+<p>Now we have to <em>search</em> for the solution for each <em>associated</em> colored k-bandit problem. This association will allow us to figure out what action to take under the <em>context</em> of the color of the slot machines. Deciding on an action based on the <em>context</em> is known as a <em>policy</em>. If the actions we take in each step affects the next type of color, then we have a full-reinforcement problem at hand.</p>
+
+<h2 id="other-approaches">Other approaches</h2>
+
+<p>There are a couple more ways to solve for multi-armed bandits; <a href="https://en.wikipedia.org/wiki/Thompson_sampling">Posterior Sampling</a> and <a href="https://en.wikipedia.org/wiki/Gittins_index">Gittins indices</a>, which I still haven&rsquo;t been able to grasp fully and might deserve a blog post of their own.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>So we&rsquo;ve seen a multitude of ways to solve for multi-armed bandit problems both stationary and non-stationary. But these are still just one instance of the full reinforcement problem with a fixed context. We&rsquo;ll still need to generalize our solution to <em>Contextual Bandits</em> problem with larger space of contexts (color, size, brand and so on).</p>
+</div>
+</main>
+ 
+
+
+
+
+
+
+<div class="tl fixed list-pages lh-copy" id="contents-list"></div>
+
+
+
+<div class="pagination tc tr-l db fixed-l bottom-2-l right-2-l mb3 mb0-l">
+  
+<a id="scroll-to-top" class="f6 o-0 link br2 ph2 pv1 mb1 bg-main-color pointer" onclick="topFunction()" style="color: #fff; visibility: hidden; display: none; transition: opacity .5s, visibility .5s;" title="back to top">back to top</a>
+<br>
+  <p class="mb0 mt2">
+  <a href="http://RameshArvind.github.io/posts/personal/first-post/">prev post</a>
+  
+  </p>
+</div>
+
+  <footer class="content-width mt0 mt5-l mb4 f6 center ph3 gray tc tl-l">
+  <hr class="dn db-l ml0-l gray w3"><br>
+  Powered by <a href="https://gohugo.io/" target="_blank" class="link gray dim">Hugo</a>, based on the <a href="https://github.com/lingxz/er" target="_blank" class="link gray dim">Er</a> theme. <br>
+  
+</footer>
+  
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<style>.is-active-link::before { background-color: var(--secondary-color); }</style>
+
+
+
+
+<script type="text/javascript">
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+
+  
+  if (document.getElementById("tag-cloud") !== null) { 
+    if (prevScrollpos > currentScrollPos) { 
+      document.getElementById("tag-cloud").style.visibility = "visible";
+      document.getElementById("tag-cloud").style.opacity = "1";
+    } else {
+      document.getElementById("tag-cloud").style.visibility = "hidden";
+      document.getElementById("tag-cloud").style.opacity = "0";
+    }
+  }
+  
+
+  
+  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+      document.getElementById("scroll-to-top").style.display = "inline";
+      document.getElementById("scroll-to-top").style.visibility = "visible";
+      document.getElementById("scroll-to-top").style.opacity = "1";
+  } else {
+      document.getElementById("scroll-to-top").style.visibility = "hidden";
+      document.getElementById("scroll-to-top").style.opacity = "0";
+  }
+  
+  prevScrollpos = currentScrollPos;
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0; 
+  document.documentElement.scrollTop = 0; 
+}
+
+
+
+
+
+
+if (document.getElementById("contents-list") !== null && document.getElementsByClassName("post-content").length !== 0) { 
+  tocbot.init({
+    
+    tocSelector: '#contents-list',
+    
+    contentSelector: '.post-content',
+    
+    headingSelector: 'h1, h2, h3',
+  });
+}
+
+
+</script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+<script>
+  renderMathInElement(document.body,
+    {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+        ]
+    }
+  );
+
+  var inlineMathArray = document.querySelectorAll("script[type='math/tex']");
+  for (var i = 0; i < inlineMathArray.length; i++) {
+    var inlineMath = inlineMathArray[i];
+    var tex = inlineMath.innerText || inlineMath.textContent;
+    var replaced = document.createElement("span");
+    replaced.innerHTML = katex.renderToString(tex, {displayMode: false});
+    inlineMath.parentNode.replaceChild(replaced, inlineMath);
+  }
+
+  var displayMathArray = document.querySelectorAll("script[type='math/tex; mode=display']");
+  for (var i = 0; i < displayMathArray.length; i++) {
+    var displayMath = displayMathArray[i];
+    var tex = displayMath.innerHTML;
+    var replaced = document.createElement("span");
+    replaced.innerHTML = katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+    displayMath.parentNode.replaceChild(replaced, displayMath);
+  }
+</script>
+
+
+</body>
+</html>

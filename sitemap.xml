@@ -3,12 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://RameshArvind.github.io/posts/multi-armed-bandits/</loc>
+    <loc>http://RameshArvind.github.io/posts/reinforcement-learning/multi-armed-bandits/</loc>
     <lastmod>2018-12-22T05:31:27+05:30</lastmod>
   </url>
   
   <url>
-    <loc>http://RameshArvind.github.io/posts/first-post/</loc>
+    <loc>http://RameshArvind.github.io/posts/personal/first-post/</loc>
     <lastmod>2018-12-20T04:41:02+05:30</lastmod>
   </url>
   
@@ -26,6 +26,12 @@
   <url>
     <loc>http://RameshArvind.github.io/tags/notes/</loc>
     <lastmod>2018-12-22T05:31:27+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://RameshArvind.github.io/tags/personal/</loc>
+    <lastmod>2018-12-20T04:41:02+05:30</lastmod>
     <priority>0</priority>
   </url>
   
