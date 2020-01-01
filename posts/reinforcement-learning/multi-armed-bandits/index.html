@@ -27,7 +27,7 @@ Think about being in a casino with no one around except you." />
 
 
 
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.40.1" />
 
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
 <style type="text/css">/*https://coolors.co/afd5aa-f0f2ef-a69f98-3d3d3d-8c6057*/
@@ -214,11 +214,22 @@ $$</p>
 
 <p>But we can take advantage of this bias and use it to supply information to the function with estimates of the rewards. This allows us to design a fully greedy system provided we set the rewards to a &ldquo;large&rdquo; value to being with. It causes the system to try an action first and once it sees that the rewards was lower than expected, it will explore another action. This way it is in a constant state of exploring until it converges to the true reward values.</p>
 
+
 <figure>
-    <img src="/greedy-vs-exploration-based-on-initial-values.png"
-         alt="From Reinforcement Learning: An Introduction, Page 27 by Sutton and Barto"/> <figcaption>
-            <h4>Greedy vs $\large\epsilon$-Greedy with large initial values.</h4><p>From Reinforcement Learning: An Introduction, Page 27 by Sutton and Barto</p>
-        </figcaption>
+    
+        <img src="/greedy-vs-exploration-based-on-initial-values.png" alt="From Reinforcement Learning: An Introduction, Page 27 by Sutton and Barto" />
+    
+    
+    <figcaption>
+        <h4>Greedy vs $\large\epsilon$-Greedy with large initial values.</h4>
+        <p>
+        From Reinforcement Learning: An Introduction, Page 27 by Sutton and Barto
+        
+            
+        
+        </p> 
+    </figcaption>
+    
 </figure>
 
 
@@ -243,11 +254,22 @@ $$</p>
 
 <p>The exploration aspect comes from the square-root term where $\ln(t)$ is the natural logarithm of the number of time steps taken till now, denominator $N_t(a)$ the number of times the action has been explored and $c$ controls the degree of exploration. This way less-explored actions will be selected more often. If $N_t(a) = 0$ then it will be chosen over other actions.</p>
 
+
 <figure>
-    <img src="/ucb-vs-epsilon.png"
-         alt="From Reinforcement Learning: An Introduction, Page 28 by Sutton and Barto."/> <figcaption>
-            <h4>UCB vs $\large\epsilon$-Greedy.</h4><p>From Reinforcement Learning: An Introduction, Page 28 by Sutton and Barto.</p>
-        </figcaption>
+    
+        <img src="/ucb-vs-epsilon.png" alt="From Reinforcement Learning: An Introduction, Page 28 by Sutton and Barto." />
+    
+    
+    <figcaption>
+        <h4>UCB vs $\large\epsilon$-Greedy.</h4>
+        <p>
+        From Reinforcement Learning: An Introduction, Page 28 by Sutton and Barto.
+        
+            
+        
+        </p> 
+    </figcaption>
+    
 </figure>
 
 
@@ -304,7 +326,7 @@ $$</p>
 <br>
   <p class="mb0 mt2">
   <a href="http://RameshArvind.github.io/posts/personal/first-post/">prev post</a>
-  
+  <a href="http://RameshArvind.github.io/posts/personal/what-is-omscs/">next post</a>
   </p>
 </div>
 
