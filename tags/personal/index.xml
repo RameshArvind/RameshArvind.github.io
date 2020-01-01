@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Personal on Ramesh&#39;s Blog</title>
+    <title>personal on Ramesh&#39;s Blog</title>
     <link>http://RameshArvind.github.io/tags/personal/</link>
-    <description>Recent content in Personal on Ramesh&#39;s Blog</description>
+    <description>Recent content in personal on Ramesh&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 02 Jan 2019 10:25:40 +0530</lastBuildDate>
@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Why I Got Into Computer Programming</title>
+      <title>Why I Got Into Computer Science</title>
       <link>http://RameshArvind.github.io/posts/personal/why-i-got-into-cs/</link>
       <pubDate>Wed, 02 Jan 2019 10:25:40 +0530</pubDate>
       
@@ -28,10 +28,10 @@ I made an account on facebook and played the games on it cause it was all the ra
       <pubDate>Wed, 02 Jan 2019 07:31:49 +0530</pubDate>
       
       <guid>http://RameshArvind.github.io/posts/personal/what-is-omscs/</guid>
-      <description>OMSCS is Georgia Tech&amp;rsquo;s Online Master&amp;rsquo;s Program in Computer Science. It is run fully online, generally taken up by working professionals.
+      <description>OMSCS is Georgia Tech&#39;s Online Master&#39;s Program in Computer Science. It is run fully online, generally taken up by working professionals.
 I enrolled into the program in Fall Semester (September - December) of 2018 thus completing one semester at the time of writing.
 Before I considered OMSCS I originally intended to apply to on-campus programs in the US, but I ended up skipping out multiple times
- First when my peers applied right out of their undergraduate program When my co-workers applied first year into their career and when they applied second year into their career  Each time I kept thinking &amp;ldquo;I&amp;rsquo;m not going to procrastinate this year and apply&amp;rdquo;.</description>
+ First when my peers applied right out of their undergraduate program When my co-workers applied first year into their career and when they applied second year into their career  Each time I kept thinking &amp;ldquo;I&#39;m not going to procrastinate this year and apply&amp;rdquo;.</description>
     </item>
     
     <item>
@@ -40,8 +40,8 @@ Before I considered OMSCS I originally intended to apply to on-campus programs i
       <pubDate>Thu, 20 Dec 2018 04:41:02 +0530</pubDate>
       
       <guid>http://RameshArvind.github.io/posts/personal/first-post/</guid>
-      <description>Why even blog? So then, this is probably going to be a pretty boring intro to what I&amp;rsquo;m trying to get at by blogging.
-I spend a lot time on the internet, it&amp;rsquo;s actually more surprising when I don&amp;rsquo;t find myself on it. I&amp;rsquo;m easily distracted when I&amp;rsquo;m trying to be productive and have a hard time trying to focus. There are specific things I&amp;rsquo;d like to achieve by blogging</description>
+      <description>Why even blog? So then, this is probably going to be a pretty boring intro to what I&#39;m trying to get at by blogging.
+I spend a lot time on the internet, it&#39;s actually more surprising when I don&#39;t find myself on it. I&#39;m easily distracted when I&#39;m trying to be productive and have a hard time trying to focus. There are specific things I&#39;d like to achieve by blogging</description>
     </item>
     
   </channel>

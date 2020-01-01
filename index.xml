@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ramesh&#39;s Blog</title>
@@ -17,12 +17,12 @@
       <pubDate>Tue, 31 Dec 2019 22:41:08 -0500</pubDate>
       
       <guid>http://RameshArvind.github.io/posts/personal/year-in-review-2019/</guid>
-      <description>Well here we are. Its 2020, another year/decade. I didn&amp;rsquo;t do a review last year but hopefully starting this year I&amp;rsquo;ll try to be more conscious about it.
-Things that happened  January  ML fellowship at fellowship.ai 2nd semester in OMSCS - Reinforcement Learning and Machine Learning for Trading  February / March  Externship at fellowship.ai Opportunity to shift to MSCS on campus  April / May / June / July  Taking time off from studying  August  Moved to Atlanta 3rd semester at Georgia Tech - Machine Learning / Deep Learning for Videos / Computer Vision  September / October  Summer Internship Hunt Interviewed at Amazon Robotics / Neosis / Worthix / Credit Karma  November  Internship offer from Worthix  December  Wrapping up semester Studying up on AlphaGO - MCTS / UCT   Reflections for 2019 I started a master&amp;rsquo;s program to just get my foot into machine learning jobs, but honestly those 60 odd questions I solved on leetcode gave me the confidence I was lacking in my earlier job hunt than the masters program itself.</description>
+      <description>Well here we are. Its 2020, another year/decade. I didn&#39;t do a review last year but hopefully starting this year I&#39;ll try to be more conscious about it.
+Things that happened  January  ML fellowship at fellowship.ai 2nd semester in OMSCS - Reinforcement Learning and Machine Learning for Trading   February / March  Externship at fellowship.ai Opportunity to shift to MSCS on campus   April / May / June / July  Taking time off from studying   August  Moved to Atlanta 3rd semester at Georgia Tech - Machine Learning / Deep Learning for Videos / Computer Vision   September / October  Summer Internship Hunt Interviewed at Amazon Robotics / Neosis / Worthix / Credit Karma   November  Internship offer from Worthix   December  Wrapping up semester Studying up on AlphaGO - MCTS / UCT    Reflections for 2019 I started a master&#39;s program to just get my foot into machine learning jobs, but honestly those 60 odd questions I solved on leetcode gave me the confidence I was lacking in my earlier job hunt than the masters program itself.</description>
     </item>
     
     <item>
-      <title>Why I Got Into Computer Programming</title>
+      <title>Why I Got Into Computer Science</title>
       <link>http://RameshArvind.github.io/posts/personal/why-i-got-into-cs/</link>
       <pubDate>Wed, 02 Jan 2019 10:25:40 +0530</pubDate>
       
@@ -38,10 +38,10 @@ I made an account on facebook and played the games on it cause it was all the ra
       <pubDate>Wed, 02 Jan 2019 07:31:49 +0530</pubDate>
       
       <guid>http://RameshArvind.github.io/posts/personal/what-is-omscs/</guid>
-      <description>OMSCS is Georgia Tech&amp;rsquo;s Online Master&amp;rsquo;s Program in Computer Science. It is run fully online, generally taken up by working professionals.
+      <description>OMSCS is Georgia Tech&#39;s Online Master&#39;s Program in Computer Science. It is run fully online, generally taken up by working professionals.
 I enrolled into the program in Fall Semester (September - December) of 2018 thus completing one semester at the time of writing.
 Before I considered OMSCS I originally intended to apply to on-campus programs in the US, but I ended up skipping out multiple times
- First when my peers applied right out of their undergraduate program When my co-workers applied first year into their career and when they applied second year into their career  Each time I kept thinking &amp;ldquo;I&amp;rsquo;m not going to procrastinate this year and apply&amp;rdquo;.</description>
+ First when my peers applied right out of their undergraduate program When my co-workers applied first year into their career and when they applied second year into their career  Each time I kept thinking &amp;ldquo;I&#39;m not going to procrastinate this year and apply&amp;rdquo;.</description>
     </item>
     
     <item>
@@ -61,8 +61,8 @@ Think about being in a casino with no one around except you.</description>
       <pubDate>Thu, 20 Dec 2018 04:41:02 +0530</pubDate>
       
       <guid>http://RameshArvind.github.io/posts/personal/first-post/</guid>
-      <description>Why even blog? So then, this is probably going to be a pretty boring intro to what I&amp;rsquo;m trying to get at by blogging.
-I spend a lot time on the internet, it&amp;rsquo;s actually more surprising when I don&amp;rsquo;t find myself on it. I&amp;rsquo;m easily distracted when I&amp;rsquo;m trying to be productive and have a hard time trying to focus. There are specific things I&amp;rsquo;d like to achieve by blogging</description>
+      <description>Why even blog? So then, this is probably going to be a pretty boring intro to what I&#39;m trying to get at by blogging.
+I spend a lot time on the internet, it&#39;s actually more surprising when I don&#39;t find myself on it. I&#39;m easily distracted when I&#39;m trying to be productive and have a hard time trying to focus. There are specific things I&#39;d like to achieve by blogging</description>
     </item>
     
     <item>
@@ -71,8 +71,8 @@ I spend a lot time on the internet, it&amp;rsquo;s actually more surprising when
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://RameshArvind.github.io/about/</guid>
-      <description>I&amp;rsquo;m Ravi Ramesh Arvind. You can find a better description on my Linkedin if you&amp;rsquo;re looking to hire me.
-What am I doing?  Machine Learning Fellow at fellowship.ai Pursuing my master&amp;rsquo;s degree from Georgia Tech via its Online Master&amp;rsquo;s in Computer Science program.  Past Work Experience  Fullstack engineer at Endurance India between 2016-2018, working mostly on React/Node.js/Java Stack. Interned at Morgan Stanley working on a visualization platform to identify performance bottlenecks.</description>
+      <description>I&#39;m Ravi Ramesh Arvind. You can find a better description on my Linkedin if you&#39;re looking to hire me.
+What am I doing?  Machine Learning Fellow at fellowship.ai Pursuing my master&#39;s degree from Georgia Tech via its Online Master&#39;s in Computer Science program.  Past Work Experience  Fullstack engineer at Endurance India between 2016-2018, working mostly on React/Node.js/Java Stack. Interned at Morgan Stanley working on a visualization platform to identify performance bottlenecks.</description>
     </item>
     
   </channel>

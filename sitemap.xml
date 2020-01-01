@@ -1,10 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://RameshArvind.github.io/posts/</loc>
+    <lastmod>2019-12-31T22:41:08-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://RameshArvind.github.io/</loc>
+    <lastmod>2019-12-31T22:41:08-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://RameshArvind.github.io/posts/personal/year-in-review-2019/</loc>
     <lastmod>2019-12-31T22:41:08-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://RameshArvind.github.io/tags/personal/</loc>
+    <lastmod>2019-01-02T10:25:40+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://RameshArvind.github.io/tags/</loc>
+    <lastmod>2019-01-02T10:25:40+05:30</lastmod>
   </url>
   
   <url>
@@ -18,7 +38,27 @@
   </url>
   
   <url>
+    <loc>http://RameshArvind.github.io/tags/omscs/</loc>
+    <lastmod>2019-01-02T07:31:49+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://RameshArvind.github.io/tags/multi-armed-bandits/</loc>
+    <lastmod>2018-12-22T05:31:27+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>http://RameshArvind.github.io/posts/reinforcement-learning/multi-armed-bandits/</loc>
+    <lastmod>2018-12-22T05:31:27+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://RameshArvind.github.io/tags/notes/</loc>
+    <lastmod>2018-12-22T05:31:27+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://RameshArvind.github.io/tags/sutton-and-barto/</loc>
     <lastmod>2018-12-22T05:31:27+05:30</lastmod>
   </url>
   
@@ -29,55 +69,6 @@
   
   <url>
     <loc>http://RameshArvind.github.io/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://RameshArvind.github.io/tags/multi-armed-bandits/</loc>
-    <lastmod>2018-12-22T05:31:27+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://RameshArvind.github.io/tags/notes/</loc>
-    <lastmod>2018-12-22T05:31:27+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://RameshArvind.github.io/tags/omscs/</loc>
-    <lastmod>2019-01-02T07:31:49+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://RameshArvind.github.io/tags/personal/</loc>
-    <lastmod>2019-01-02T10:25:40+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://RameshArvind.github.io/posts/</loc>
-    <lastmod>2019-12-31T22:41:08-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://RameshArvind.github.io/</loc>
-    <lastmod>2019-12-31T22:41:08-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://RameshArvind.github.io/tags/sutton-and-barto/</loc>
-    <lastmod>2018-12-22T05:31:27+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://RameshArvind.github.io/tags/</loc>
-    <lastmod>2018-12-22T05:31:27+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
