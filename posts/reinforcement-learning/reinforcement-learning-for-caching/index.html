@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <title> - Ramesh&#39;s Blog</title>
+  <meta content=' - Ramesh&#39;s Blog' property='title' />
+  <meta content=' - Ramesh&#39;s Blog' property='og:title' />
+
+
+<meta property="og:description" content="Reinforcement Learning for Caching Databases are ubiquitous in the world of internet companies. Almost every company today has a system of records for their users, content, transactions and a variety of other forms of data. Processing large amounts of data efficiently has been a key component of database research for many decades by optimizing different database components.
+One such component is the cache. It is used to reduce the amount of disk reads / writes to optimize latency." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://RameshArvind.github.io/posts/reinforcement-learning/reinforcement-learning-for-caching/" />
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.0" />
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+<style type="text/css">/*https://coolors.co/afd5aa-f0f2ef-a69f98-3d3d3d-8c6057*/
+:root {
+  --main-color: #8C6056; 
+  --secondary-color: #AFD5AA;
+  --logo-text-color: #fff;
+  --body-text-color: #3d3d3d;
+  --heading-text-color: #383838;
+  --background-color: #fff;
+}</style>
+<link href='/css/tachyons.min.css' rel="stylesheet">
+<link href='/css/styles.css' rel="stylesheet">
+<link rel="stylesheet" href="/css/custom.css">
+
+
+<link rel="icon" 
+ 
+  href='/favicon.ico'
+
+type="image/x-icon"/>
+
+<link href='/feed.xml' rel="alternate" type="application/atom+xml" title="Ramesh&#39;s Blog" />
+
+</head>
+<body class="global-font">
+  <nav class=" flex-ns justify-between border-box pa3 pl3-l pr2-l mt1 mt0-ns" id="navbar">
+  <div class="flex">
+    <a class="f4 fw6 ttu no-underline dim bg-main-color pv1 ph2 br2" id="site-title" href='/' title="Home">Ramesh&#39;s Blog</a>
+  </div>
+  
+  <div class=" flex-ns mt2 mt0-ns pv1">
+    
+      <a class="link dim dark-gray f6 dib mr2 mr3-l ttu tracked" href='/about/' title="About">About</a>
+    
+      <a class="link dim dark-gray f6 dib mr2 mr3-l ttu tracked" href='https://github.com/RameshArvind/' title="Github">Github</a>
+    
+      <a class="link dim dark-gray f6 dib mr2 mr3-l ttu tracked" href='https://www.linkedin.com/in/ramesharvind1994/' title="Linkedin">Linkedin</a>
+    
+      <a class="link dim dark-gray f6 dib mr2 mr3-l ttu tracked" href='https://twitter.com/RameshArv1nd' title="Twitter">Twitter</a>
+    
+  </div>
+  
+</nav>
+  
+<main class="center mv4 content-width ph3">
+  <div class="f3 fw6 heading-color heading-font post-title"></div>
+  <p class="silver f6 mt1 mb4 post-meta">
+    
+    
+    
+    
+  </p>
+  <div class="lh-copy post-content"><h1 id="reinforcement-learning-for-caching">Reinforcement Learning for Caching</h1>
+<p>Databases are ubiquitous in the world of internet companies. Almost every company today has a system of records for their users, content, transactions and a variety of other forms of data. Processing large amounts of data efficiently has been a key component of database research for many decades by optimizing different database components.</p>
+<p>One such component is the cache. It is used to reduce the amount of disk reads / writes to optimize latency. A widely used caching algorithm is the Least Recently Used (LRU) algorithm which is simple but efficient. With the increasing amounts of data, research has been focused on implementing an adaptive caching strategy that learns from past database accesses. This area of research is at the intersection of Systems and Machine Learning.</p>
+<p>In this special problem we wish to explore various facets of the caching algorithm such as</p>
+<h2 id="prefetching">Prefetching</h2>
+<p>While processing large workloads, access different memory segments each time is a big bottleneck to database performance. Strategies to predict which memory block will be accessed next is a big improvement</p>
+<h2 id="cache-admission">Cache Admission</h2>
+<p>Once a memory block has been accessed, determining if it needs to be cached or not helps improve cache efficiency. Pre-emptively caching a short lived object will not only reduce cache storage efficiency, but it also increases number of cache misses due to eviction of an existing object.</p>
+<h2 id="cache-eviction">Cache Eviction</h2>
+<p>Managing the cache is also important. Ensuring that the cache consists of only &ldquo;hot&rdquo; objects is of vital importance to maximize cache hits. Removing &ldquo;cold&rdquo; entries allows the next &ldquo;hot&rdquo; objects to be cached.</p>
+<h2 id="ttl-prediction">TTL Prediction</h2>
+<p>This is a subset of the cache eviction policy, in that predicting how long an object will remain &ldquo;hot&rdquo; allows the cache to clean up the cache without having to make a decision on every cache admission. With a TTL attached to every object, the cache can asynchronously evict objects whose TTL has passed. The TTL is also an indicator of the value of the object with respect to cache.</p>
+<h2 id="capacity-aware-caching">Capacity Aware Caching</h2>
+<p>With homogeneous object sizes, the decision to evict/admit an object is purely a function of its &ldquo;hotness&rdquo;. In a heterogeneous setting since the cache is usually a fixed size, one must also consider the size of objects being stored in addition to the &ldquo;hotness&rdquo; factor. A large object which is also hot is relatively less efficient than a smaller object which is equally &ldquo;hot&rdquo;. Considering the size of objects in the caching decision improves the efficiency of the cache in a constrained setting.</p>
+<p>There has been existing work done on applying reinforcement learning for learning cache eviction policy using Deep Q Networks and using supervised approaches for Cache admission / prefetching tasks.</p>
+<p>There have also been approaches which tackle all the various facets as one multi-agent reinforcement learning problem and benchmarked it against the Yahoo Cloud Serving benchmark.</p>
+<p>This task has various applications in web, filesystem and virtually any system that utilizes a caching policy with actively changing trends of access patterns.</p>
+<p>Various Tasks outlined for study:</p>
+<ul>
+<li>Understand the existing implementations of cache replacement policies</li>
+<li>Formulate the cache eviction problem and benchmarking strategies</li>
+<li>Implementation of reinforcement learning policy for caching</li>
+<li>Evaluating our learned policy with existing policies</li>
+</ul>
+<p>We conduct this research with the aim of publishing it in a peer reviewed journal.</p>
+</div>
+</main>
+ 
+
+
+
+
+
+
+<div class="tl fixed list-pages lh-copy" id="contents-list"></div>
+
+
+
+<div class="pagination tc tr-l db fixed-l bottom-2-l right-2-l mb3 mb0-l">
+  
+<a id="scroll-to-top" class="f6 o-0 link br2 ph2 pv1 mb1 bg-main-color pointer" onclick="topFunction()" style="color: #fff; visibility: hidden; display: none; transition: opacity .5s, visibility .5s;" title="back to top">back to top</a>
+<br>
+  <p class="mb0 mt2">
+  
+  <a href="http://RameshArvind.github.io/posts/personal/first-post/">next post</a>
+  </p>
+</div>
+
+  <footer class="content-width mt0 mt5-l mb4 f6 center ph3 gray tc tl-l">
+  <hr class="dn db-l ml0-l gray w3"><br>
+  Powered by <a href="https://gohugo.io/" target="_blank" class="link gray dim">Hugo</a>, based on the <a href="https://github.com/lingxz/er" target="_blank" class="link gray dim">Er</a> theme. <br>
+  
+</footer>
+  
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<style>.is-active-link::before { background-color: var(--secondary-color); }</style>
+
+
+
+
+<script type="text/javascript">
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+
+  
+  if (document.getElementById("tag-cloud") !== null) { 
+    if (prevScrollpos > currentScrollPos) { 
+      document.getElementById("tag-cloud").style.visibility = "visible";
+      document.getElementById("tag-cloud").style.opacity = "1";
+    } else {
+      document.getElementById("tag-cloud").style.visibility = "hidden";
+      document.getElementById("tag-cloud").style.opacity = "0";
+    }
+  }
+  
+
+  
+  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+      document.getElementById("scroll-to-top").style.display = "inline";
+      document.getElementById("scroll-to-top").style.visibility = "visible";
+      document.getElementById("scroll-to-top").style.opacity = "1";
+  } else {
+      document.getElementById("scroll-to-top").style.visibility = "hidden";
+      document.getElementById("scroll-to-top").style.opacity = "0";
+  }
+  
+  prevScrollpos = currentScrollPos;
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0; 
+  document.documentElement.scrollTop = 0; 
+}
+
+
+
+
+
+
+if (document.getElementById("contents-list") !== null && document.getElementsByClassName("post-content").length !== 0) { 
+  tocbot.init({
+    
+    tocSelector: '#contents-list',
+    
+    contentSelector: '.post-content',
+    
+    headingSelector: 'h1, h2, h3',
+  });
+}
+
+
+</script>
+
+
+
+
+</body>
+</html>

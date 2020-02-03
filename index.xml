@@ -6,10 +6,21 @@
     <description>Recent content on Ramesh&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 31 Dec 2019 22:41:08 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 03 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://RameshArvind.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>What do I consume on the internet</title>
+      <link>http://RameshArvind.github.io/posts/personal/what-i-consume-in-the-internet/</link>
+      <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://RameshArvind.github.io/posts/personal/what-i-consume-in-the-internet/</guid>
+      <description>There&#39;s so much content out there between
+ YouTube Reddit Twitter Hacker News Twitch  I&#39;m at the point where I can&#39;t not have one of those tabs open regardless of what I&#39;m working.
+General Content that interests me  Reinforcement Learning Unusual applications of machine learning Links explaining social phenomena Content creators that I follow  Twitter I usually start the day checking out twitter. I follow mostly people in the machine learning scene.</description>
+    </item>
     
     <item>
       <title>Year in Review 2019</title>
@@ -66,13 +77,23 @@ I spend a lot time on the internet, it&#39;s actually more surprising when I don
     </item>
     
     <item>
+      <title></title>
+      <link>http://RameshArvind.github.io/posts/reinforcement-learning/reinforcement-learning-for-caching/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://RameshArvind.github.io/posts/reinforcement-learning/reinforcement-learning-for-caching/</guid>
+      <description>Reinforcement Learning for Caching Databases are ubiquitous in the world of internet companies. Almost every company today has a system of records for their users, content, transactions and a variety of other forms of data. Processing large amounts of data efficiently has been a key component of database research for many decades by optimizing different database components.
+One such component is the cache. It is used to reduce the amount of disk reads / writes to optimize latency.</description>
+    </item>
+    
+    <item>
       <title>Who is this Guy?!</title>
       <link>http://RameshArvind.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://RameshArvind.github.io/about/</guid>
       <description>I&#39;m Ravi Ramesh Arvind. You can find a better description on my Linkedin if you&#39;re looking to hire me.
-What am I doing?  Machine Learning Fellow at fellowship.ai Pursuing my master&#39;s degree from Georgia Tech via its Online Master&#39;s in Computer Science program.  Past Work Experience  Fullstack engineer at Endurance India between 2016-2018, working mostly on React/Node.js/Java Stack. Interned at Morgan Stanley working on a visualization platform to identify performance bottlenecks.</description>
+What am I doing?  Pursuing my master&#39;s degree from Georgia Tech via its Online Master&#39;s in Computer Science program.  Moved to Atlanta to the on-campus program.    Past Work Experience  Machine Learning Fellow at fellowship.ai Fullstack engineer at Endurance India between 2016-2018, working mostly on React/Node.js/Java Stack.</description>
     </item>
     
   </channel>
