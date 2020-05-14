@@ -3,12 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://RameshArvind.github.io/tags/personal/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://RameshArvind.github.io/posts/</loc>
     <lastmod>2020-02-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://RameshArvind.github.io/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://RameshArvind.github.io/tags/</loc>
     <lastmod>2020-02-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -20,16 +30,6 @@
   <url>
     <loc>http://RameshArvind.github.io/posts/personal/year-in-review-2019/</loc>
     <lastmod>2019-12-31T22:41:08-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://RameshArvind.github.io/tags/personal/</loc>
-    <lastmod>2019-01-02T10:25:40+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://RameshArvind.github.io/tags/</loc>
-    <lastmod>2019-01-02T10:25:40+05:30</lastmod>
   </url>
   
   <url>

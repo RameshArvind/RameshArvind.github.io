@@ -6,10 +6,31 @@
     <description>Recent content in personal on Ramesh&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Jan 2019 10:25:40 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 03 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://RameshArvind.github.io/tags/personal/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>What do I consume on the internet</title>
+      <link>http://RameshArvind.github.io/posts/personal/what-i-consume-in-the-internet/</link>
+      <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://RameshArvind.github.io/posts/personal/what-i-consume-in-the-internet/</guid>
+      <description>There&amp;rsquo;s so much content out there between
+ YouTube Reddit Twitter Hacker News Twitch  I&amp;rsquo;m at the point where I can&amp;rsquo;t not have one of those tabs open regardless of what I&amp;rsquo;m working.
+General Content that interests me  Reinforcement Learning Unusual applications of machine learning Links explaining social phenomena Content creators that I follow  Twitter I usually start the day checking out twitter. I follow mostly people in the machine learning scene.</description>
+    </item>
+    
+    <item>
+      <title>Year in Review 2019</title>
+      <link>http://RameshArvind.github.io/posts/personal/year-in-review-2019/</link>
+      <pubDate>Tue, 31 Dec 2019 22:41:08 -0500</pubDate>
+      
+      <guid>http://RameshArvind.github.io/posts/personal/year-in-review-2019/</guid>
+      <description>Well here we are. Its 2020, another year/decade. I didn&amp;rsquo;t do a review last year but hopefully starting this year I&amp;rsquo;ll try to be more conscious about it.
+Things that happened  January  ML fellowship at fellowship.ai 2nd semester in OMSCS - Reinforcement Learning and Machine Learning for Trading   February / March  Externship at fellowship.ai Opportunity to shift to MSCS on campus   April / May / June / July  Taking time off from studying   August  Moved to Atlanta 3rd semester at Georgia Tech - Machine Learning / Deep Learning for Videos / Computer Vision   September / October  Summer Internship Hunt Interviewed at Amazon Robotics / Neosis / Worthix / Credit Karma   November  Internship offer from Worthix   December  Wrapping up semester Studying up on AlphaGO - MCTS / UCT    Reflections for 2019 I started a master&amp;rsquo;s program to just get my foot into machine learning jobs, but honestly those 60 odd questions I solved on leetcode gave me the confidence I was lacking in my earlier job hunt than the masters program itself.</description>
+    </item>
     
     <item>
       <title>Why I Got Into Computer Science</title>
