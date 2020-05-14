@@ -27,7 +27,7 @@ Think about being in a casino with no one around except you." />
 
 
 
-<meta name="generator" content="Hugo 0.62.0" />
+<meta name="generator" content="Hugo 0.70.0" />
 
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
 <style type="text/css">/*https://coolors.co/afd5aa-f0f2ef-a69f98-3d3d3d-8c6057*/
@@ -87,14 +87,14 @@ type="image/x-icon"/>
 <p>All of the content here is to be a summary/notes for the multi-armed bandits chapter in the 2nd edition of the book <em><strong>Reinforcement Learning: An Introduction</strong></em> by Sutton and Barto.</p>
 <h2 id="what-is-the-mab-problem">What is the MAB problem?</h2>
 <p>Consider <em>k</em> different slot machines each with different payouts and probabilities of winning. Our goal is to maximize winnings over it without any prior knowledge of the machines.</p>
-<p>Think about being in a casino with no one around except you. You're given 1000 attempts at various slot machines but you have no idea about their dynamics. Naturally you'd want to maximize your profit.</p>
+<p>Think about being in a casino with no one around except you. You&rsquo;re given 1000 attempts at various slot machines but you have no idea about their dynamics. Naturally you&rsquo;d want to maximize your profit.</p>
 <ul>
-<li>Let's say you start off randomly going around trying different machines and note the money you've made from each attempt. You do this to gauge the amount of money you can make off of each machine. This is called <strong>exploration</strong>.</li>
-<li>Now after a while you'll want to maximize amount of money and use the machine which has best odds based on your observations. This is called <strong>exploitation</strong>.</li>
+<li>Let&rsquo;s say you start off randomly going around trying different machines and note the money you&rsquo;ve made from each attempt. You do this to gauge the amount of money you can make off of each machine. This is called <strong>exploration</strong>.</li>
+<li>Now after a while you&rsquo;ll want to maximize amount of money and use the machine which has best odds based on your observations. This is called <strong>exploitation</strong>.</li>
 </ul>
 <h2 id="explorationexploitation-dilemma">Exploration/Exploitation Dilemma</h2>
 <p>When do you decide to explore more versus exploting already know information?</p>
-<p>Determining the balance is broadly based on the estimates we've made so far, uncertainties and the amount of turns we have left. There are sophisticated methods which can be applied, but it makes strong assumptions on the problem which are impractical.</p>
+<p>Determining the balance is broadly based on the estimates we&rsquo;ve made so far, uncertainties and the amount of turns we have left. There are sophisticated methods which can be applied, but it makes strong assumptions on the problem which are impractical.</p>
 <p>In any case we have to determine the value of each machine. In our above scenario a natural estimate is to just average the money earned from each machine as its value.</p>
 <p>$$\Large Q_t(a) = \frac {sum\ of\ rewards\ when\ a\ taken\ prior\ to\ t} {number\ of\ times\ a\ taken\ prior\ to\ t} = \frac {\sum_{t=1}^{t-1} R_i.1_{A_i=a}} {\sum_{t=1}^{t-1}1_{A_i=a}}$$</p>
 <p><strong>1</strong> is a function which equates to value 1 if its predicate is satisfied . In our case its if action is equal to <em>a</em>.</p>
@@ -151,9 +151,9 @@ $$</p>
 <blockquote>
 <p>Consider the above bandit actions with 4 actions using ε-greedy selection. Where did the exploratory action take place definitely? Where did it possibly occur?</p>
 </blockquote>
-<p>Here in timestep 2, the exploratory action occurred since it has observed that action 1 yielded reward 1 which is greater than 0 for the other actions. It definitely occured at timestep 5 since the reward is 0 and it wasn't the greedy choice of action 2.</p>
+<p>Here in timestep 2, the exploratory action occurred since it has observed that action 1 yielded reward 1 which is greater than 0 for the other actions. It definitely occured at timestep 5 since the reward is 0 and it wasn&rsquo;t the greedy choice of action 2.</p>
 <h2 id="epsilon-greedy-vs-greedy">Epsilon Greedy vs Greedy</h2>
-<p>Epsilon greedy isn't always the clear choice for an action selection strategy. It's based upon the variance in the rewards. The larger the variance, the better epsilon greedy fares. In case the variance is zero, then the greedy selection fares better after exploring each action once.</p>
+<p>Epsilon greedy isn&rsquo;t always the clear choice for an action selection strategy. It&rsquo;s based upon the variance in the rewards. The larger the variance, the better epsilon greedy fares. In case the variance is zero, then the greedy selection fares better after exploring each action once.</p>
 <p>The other section where epsilon greedy fares better is in non-stationary rewards i.e rewards that change over time. Even in this case, the algorithm can keep up.</p>
 <h2 id="efficient-way-of-computing-sample-averages">Efficient way of computing sample-averages</h2>
 <p>As we have seen, computing the sample average involves a summation over timesteps. Recalculating it each time for an update is inefficient.</p>
@@ -167,8 +167,8 @@ $$</p>
 <p>We mentioned nonstationary rewards i.e reward probabilities that change over time. In these situations it makes more sense to weigh the recent rewards more than long term rewards. One way to do this is to keep a constant step-size $\large \alpha$ instead of $\large 1/n$</p>
 <p>$$\Large Q_{n+1} = Q_n + \alpha \Bigl[R_n - Q_n\Bigr]$$</p>
 <p>This is known as <em>exponential recency-weighted average</em> as the rewards from the past are considered in exponentially decreasing weightage.</p>
-<h2 id="initial-values-for-q-n">Initial values for $Q_n$</h2>
-<p>In a sense $Q_n(a)$ depends on what initial values we set at the first timestep for the actions. Even if we set all of them to zero, it is still influencing what the future values become. It's effect reduces as we increase the number of timesteps and is usually not a problem.</p>
+<h2 id="initial-values-for-q_n">Initial values for $Q_n$</h2>
+<p>In a sense $Q_n(a)$ depends on what initial values we set at the first timestep for the actions. Even if we set all of them to zero, it is still influencing what the future values become. It&rsquo;s effect reduces as we increase the number of timesteps and is usually not a problem.</p>
 <p>But we can take advantage of this bias and use it to supply information to the function with estimates of the rewards. This allows us to design a fully greedy system provided we set the rewards to a &ldquo;large&rdquo; value to being with. It causes the system to try an action first and once it sees that the rewards was lower than expected, it will explore another action. This way it is in a constant state of exploring until it converges to the true reward values.</p>
 <figure>
     <img src="/greedy-vs-exploration-based-on-initial-values.png"
@@ -178,9 +178,9 @@ $$</p>
 </figure>
 
 <p>We can see that the greedy version converges faster than the $\large\epsilon$-greedy even though it is just acting greedily. The constant updates to rewards causes it to explore more.</p>
-<p>This technique works well for stationary problems (environment doesn't change its rewards over time), but for non-stationary it is only a temporary boost to exploration.</p>
+<p>This technique works well for stationary problems (environment doesn&rsquo;t change its rewards over time), but for non-stationary it is only a temporary boost to exploration.</p>
 <h2 id="upper-confidence-bound-action-selection">Upper-Confidence-Bound Action Selection</h2>
-<p>$\large\epsilon$-greedy still has a problem we haven't considered. It picks the exploratory action at random, paying no heed to whether it has been explored already or not.</p>
+<p>$\large\epsilon$-greedy still has a problem we haven&rsquo;t considered. It picks the exploratory action at random, paying no heed to whether it has been explored already or not.</p>
 <p>Instead we would pick actions to explore based on how uncertain we are of their values i.e based how often we have already explored them. One way of doing this is via this form for action selection</p>
 <p>$$\large A_t = argmax_a \Bigl[Q_t(a) + c\sqrt{\frac{\ln(t)}{N_t(a)}}\Bigr]$$</p>
 <p>Instead of exploring randomly, we pick the action based upon two parts</p>
@@ -197,7 +197,7 @@ $$</p>
 </figure>
 
 <h2 id="gradient-bandit-algorithms">Gradient Bandit Algorithms</h2>
-<p>This is a different approach to action selection where instead of selecting an action based on maximizing reward values, we instead just define a preference for what action we'd like to perform. Its sort of like sorting all the actions based on preference and for each timestep choose the highest one. The preference is given by a function $H_t(a)$ and action selection is made via a softmax function:</p>
+<p>This is a different approach to action selection where instead of selecting an action based on maximizing reward values, we instead just define a preference for what action we&rsquo;d like to perform. Its sort of like sorting all the actions based on preference and for each timestep choose the highest one. The preference is given by a function $H_t(a)$ and action selection is made via a softmax function:</p>
 <p>$$Probability\ of\ choosing\ (A_t = a)\ from\ k\ actions= \frac{e^{H_t(a)}}{\sum\limits_{b=1}^{k} e^{H_t(b)}} = \pi_t(a)$$</p>
 <p>The initial values for $H_t(a)$ is 0 for all actions $a$.</p>
 <p>The update rule for the preferences is given by the following equations</p>
@@ -209,12 +209,12 @@ $$</p>
 <p>Also we can substitute $\bar{R}_t$ with any constant or term that does not depend on the selected action and the algorithm will still converge to optimal values.</p>
 <h2 id="associative-search-contextual-bandits">Associative Search (Contextual Bandits)</h2>
 <p>Consider our casino problem again. First there were just a bunch of slot machines and our goal was to find the best machine as soon as possible and maximize our profit.</p>
-<p>Let's add another dimension to the problem. Let's say the colors of all the machines change after every action you take. On every color change, the reward functions associated with the slot machines change accordingly. This way instead of one k-bandit problem, you have multiple k-bandit problems to solve. We'll need different collections of $Q_t(a)$ ( or $H_t(a)$) for each colored k-bandit problem.</p>
+<p>Let&rsquo;s add another dimension to the problem. Let&rsquo;s say the colors of all the machines change after every action you take. On every color change, the reward functions associated with the slot machines change accordingly. This way instead of one k-bandit problem, you have multiple k-bandit problems to solve. We&rsquo;ll need different collections of $Q_t(a)$ ( or $H_t(a)$) for each colored k-bandit problem.</p>
 <p>Now we have to <em>search</em> for the solution for each <em>associated</em> colored k-bandit problem. This association will allow us to figure out what action to take under the <em>context</em> of the color of the slot machines. Deciding on an action based on the <em>context</em> is known as a <em>policy</em>. If the actions we take in each step affects the next type of color, then we have a full-reinforcement problem at hand.</p>
 <h2 id="other-approaches">Other approaches</h2>
-<p>There are a couple more ways to solve for multi-armed bandits; <a href="https://en.wikipedia.org/wiki/Thompson_sampling">Posterior Sampling</a> and <a href="https://en.wikipedia.org/wiki/Gittins_index">Gittins indices</a>, which I still haven't been able to grasp fully and might deserve a blog post of their own.</p>
+<p>There are a couple more ways to solve for multi-armed bandits; <a href="https://en.wikipedia.org/wiki/Thompson_sampling">Posterior Sampling</a> and <a href="https://en.wikipedia.org/wiki/Gittins_index">Gittins indices</a>, which I still haven&rsquo;t been able to grasp fully and might deserve a blog post of their own.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>So we've seen a multitude of ways to solve for multi-armed bandit problems both stationary and non-stationary. But these are still just one instance of the full reinforcement problem with a fixed context. We'll still need to generalize our solution to <em>Contextual Bandits</em> problem with larger space of contexts (color, size, brand and so on).</p>
+<p>So we&rsquo;ve seen a multitude of ways to solve for multi-armed bandit problems both stationary and non-stationary. But these are still just one instance of the full reinforcement problem with a fixed context. We&rsquo;ll still need to generalize our solution to <em>Contextual Bandits</em> problem with larger space of contexts (color, size, brand and so on).</p>
 </div>
 </main>
  
