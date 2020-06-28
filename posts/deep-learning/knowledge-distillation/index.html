@@ -4,12 +4,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content='text/html; charset=utf-8' http-equiv='content-type' />
 
-  <title>Knowledge Distillation - Ramesh&#39;s Blog</title>
-  <meta content='Knowledge Distillation - Ramesh&#39;s Blog' property='title' />
-  <meta content='Knowledge Distillation - Ramesh&#39;s Blog' property='og:title' />
+  <title>Understanding Knowledge Distillation - Ramesh&#39;s Blog</title>
+  <meta content='Understanding Knowledge Distillation - Ramesh&#39;s Blog' property='title' />
+  <meta content='Understanding Knowledge Distillation - Ramesh&#39;s Blog' property='og:title' />
 
 
-<meta property="og:description" content="" />
+<meta property="og:description" content="Core Idea   General Architecture of a knowledge distillation setup   The concept provides us an answer to the question if a smaller model can be made to perform as good as a large model on classification tasks . This question can be rephrased to distilling the knowledge of a larger model into a smaller model.
+The approach is outlined by the paper titled &ldquo;Distilling the Knowledge in a Neural Network&rdquo; 1." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://RameshArvind.github.io/posts/deep-learning/knowledge-distillation/" />
 
@@ -72,16 +73,115 @@ type="image/x-icon"/>
 </nav>
   
 <main class="center mv4 content-width ph3">
-  <div class="f3 fw6 heading-color heading-font post-title">Knowledge Distillation</div>
+  <div class="f3 fw6 heading-color heading-font post-title">Understanding Knowledge Distillation</div>
   <p class="silver f6 mt1 mb4 post-meta">
     <time>14 May 2020</time> 
+     | 
     
     
-    
-    tags: [  ]
+    tags: [ <a href='/tags/deep-learning' class="link silver">deep-learning</a>  ]
     
   </p>
-  <div class="lh-copy post-content"></div>
+  <div class="lh-copy post-content"><h2 id="core-idea">Core Idea</h2>
+<figure>
+    <img src="/knowledge-distillation-image.jpg"/> <figcaption>
+            <h4>General Architecture of a knowledge distillation setup</h4>
+        </figcaption>
+</figure>
+
+<p>The concept provides us an answer to the question if <!-- raw HTML omitted --> a smaller model can be made to perform as good as a large model on classification tasks <!-- raw HTML omitted -->. This question can be rephrased to <!-- raw HTML omitted --> distilling the knowledge of a larger model into a smaller model<!-- raw HTML omitted -->.</p>
+<p>The approach is outlined by the paper titled &ldquo;Distilling the Knowledge in a Neural Network&rdquo; <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>The above image outlines the different models and the loss function components that usually comprise KD. The image is taken from a paper titled &ldquo;On the Efficacy of Knowledge Distillation&rdquo; <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<h2 id="motivations">Motivations</h2>
+<p>Knowledge distillation primarily helps port your big beefy models to models with smaller memory and compute footprints. This has applications in edge devices and sensors where compute / memory and energy usage are of big concern. It also can just be used to speed up inference via smaller models in regular applications.</p>
+<p>Smaller footprints can be achieved by using more efficient model architectures or low-precision models.</p>
+<h2 id="training-for-knowledge-distillation">Training for Knowledge Distillation</h2>
+<p>You would require two models to perform this task with one of them being larger (in model size and complexity) than the other.</p>
+<p>There are two stages to this training procedure:</p>
+<ol>
+<li>Train the larger model on your dataset. This is your regular training procedure.</li>
+<li>Train your smaller model on the same dataset with an additional KL divergence loss between the smaller and larger model predictions. This loss component constrains the outputs of the smaller model to match those of the larger model.</li>
+</ol>
+<h2 id="an-analogy">An Analogy</h2>
+<p>This training procedure also has a nice analogy of student-teacher relationship between the two models.</p>
+<p>If you consider a textbook, the student trying to understand it by themselves might prove too difficult. A teacher who has digested the contents of the textbook better will have an easier time explaining the nuances of the textbook to a student.</p>
+<p>Here the textbook represents the dataset and the student/teacher to be the smaller/larger models respectively. The additional loss component in the student&rsquo;s training procedure constitutes the knowledge transfer between the teacher and student.</p>
+<h2 id="understanding-the-loss-function">Understanding the loss function</h2>
+<p>$$ loss = \alpha * CE(y_{pred}, y_{true}) + \beta * KL(y_{pred}, y_{teacher})$$</p>
+<p>The loss function for the teacher would just be cross entropy loss which is usually the case for classification tasks.</p>
+<p>The student&rsquo;s loss function would also be the cross entropy loss with the aforementioned KL-divergence loss between the students outputs and the teacher&rsquo;s outputs. A simple description of the KL-divergence is that it measures the distance between two distributions (here the distributions being the class probabilities of the student/teacher). By minimizing the KL-div loss, we are teaching the student to make similar predictions to the teacher.</p>
+<h2 id="where-is-the-knowledge-transfer-coming-from">Where is the knowledge transfer coming from?</h2>
+<p>A teacher model&rsquo;s predictions for a given datapoint isn&rsquo;t an exact class but a probability distribution across the possible classes. This distribution contains the information that makes training the student easier.</p>
+<p>Consider the example of an animal classifier with four classes dog / cat / eagle and snake. If you were to train with an image of a dog the expected cross entropy loss would be computed with [1,0,0,0] as a 1-hot encoded target.</p>
+<p>If you were to consider the outputs from a teacher for the same image, it would be closer to something like [0.9,0.08,0.01,0.01], because we know that an image of a dog is closer to cat than that of an eagle or snake (they both have limbs and ears as compared to snake/eagle). By using a KL-div loss on these outputs, we wish to convey to the student that the classes of cat and dog are related (and weighed proportionally based on the output probabilities).</p>
+<p>The key thing to note is that the only thing we need from the teacher is just its outputs on a given datapoint i.e the logits. You would think that given we have access to the teachers&rsquo;s parameters there might something more complicated to transfer the knowledge to the student.</p>
+<h2 id="hyperparameters">Hyperparameters</h2>
+<p>New approaches = More hyperparameters. There are a few new parameters to consider when deciding on the this task.</p>
+<h3 id="temperature">Temperature</h3>
+<table>
+<thead>
+<tr>
+<th>Temperature</th>
+<th>Logits</th>
+<th>Softmax Probabilities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>[30, 5, 2, 2]</td>
+<td>[1.0000e+00, 1.3888e-11, 6.9144e-13, 6.9144e-13]</td>
+</tr>
+<tr>
+<td>10</td>
+<td>[3, 0.5, 0.2, 0.2]</td>
+<td>[0.8308, 0.0682, 0.0505, 0.0505]</td>
+</tr>
+</tbody>
+</table>
+<p>As we saw earlier, the predictions from the teacher is where the knowledge transfer comes from. If the teacher is extremely confident in its prediction, it won&rsquo;t be too different from the true 1-hot encoded label. Consider the class scores (the model&rsquo;s outputs before softmax) in the first row of the above table. Its corresponding softmax output isn&rsquo;t much different from the ground truth <strong>[1,0,0,0]</strong>. Ideally we want the student learn that there&rsquo;s a relation between the 1st and 2nd class. So before we compute the softmax, we divide the scores of each class by a constant known as the temperature. In the above example with a temperature value of 10, the new scores would be as shown in the 2nd row and the corresponding softmax probabilities are more distributed across the other classes. Higher temperatures produce softer probabilities which provides a stronger signal to the student for learning from the teacher.</p>
+<p>When setting the temperatures, both the student and teacher&rsquo;s pre-softmax outputs are divided by temperature only for the KL component of the loss. To offset this division, the KL term is multiplied by square of the temperature $T^2$</p>
+<h3 id="weights-for-the-student-loss-function">Weights for the student loss function.</h3>
+<p>We need to decide the proportions ($\alpha$ and $\beta$ in the loss function) on how much the regular cross-entropy loss and KL-div loss because this determines how much we value the student learning from scratch vs learning from the teacher. Usually $\beta$ is smaller than $\alpha$ which causes the KL loss to act as regularizer for the student model.</p>
+<h3 id="teacher--student-model-architectures">Teacher / Student Model architectures</h3>
+<p>It would be tempting to use a very large model as your teacher as it has the capacity to generalize to your dataset and transfer it to your smaller model. But this paper [^2] shows that if there is a large mismatch between the capacities of your student and teacher models, it might have the opposite effect and instead hurt the performance of your student model. When the teacher model is too large, the student model has difficulties mimicking the predictions of the teachers.</p>
+<h3 id="early-stopping">Early stopping</h3>
+<p>With the KL-divergence loss, the authors of <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> show that towards the end of training, the KL div loss dominates the loss and in turn hurts the overall accuracy of the student model. Thus they propose that early stopping of the KL div loss greatly benefits the student model.</p>
+<h2 id="related-topics">Related Topics</h2>
+<h3 id="quantization">Quantization</h3>
+<p>Model quantization <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> is a technique where the weights of the model are converted from high-precision numbers to low precision numbers. Consider an analogy that multiplying 2 and 10 is easier than 2.2334 and 10.2938. But the downside is that this conversion process is not trivial and sometimes it needs to be done in tandem while training the model as well. Knowledge distillation is one way to stabilize training such quantized models from traditional large models.</p>
+<h3 id="pruning">Pruning</h3>
+<p>Pruning is a technique used to remove redundant or ineffective components of a trained neural network. It is known that not all parts of a neural network contribute evenly towards its performance. Pruning identifies such parts and helps remove them to reduce model size and inference speed. One way to combine pruning and knowledge distillation <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> is to</p>
+<ol>
+<li>Train a large model on a dataset</li>
+<li>Prune it to arrive at a smaller model</li>
+<li>Perform knowledge distillation between the trained model and pruned model.</li>
+</ol>
+<p>This allows us to systematically reduce the model size to further improve model performance.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Knowledge distillation is an interesting way to improve inference quality allowing us to combine performance of large models with low resource architectures.</p>
+<p>For more information on this topic please see the references section <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Distilling the Knowledge in a Neural Network - <a href="https://arxiv.org/pdf/1503">https://arxiv.org/pdf/1503</a>. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>On the Efficacy of Knowledge Distillation - <a href="https://arxiv.org/abs/1910.01348">https://arxiv.org/abs/1910.01348</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>A Survey on Methods and Theories of Quantized Neural Networks - <a href="https://arxiv.org/abs/1808.04752">https://arxiv.org/abs/1808.04752</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>Using Distillation to Improve Network Performance after Pruning and Quantization - <a href="https://dl.acm.org/doi/abs/10.1145/3366750.3366751">https://dl.acm.org/doi/abs/10.1145/3366750.3366751</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p><a href="https://nervanasystems.github.io/distiller/knowledge_distillation.html">Distiller library&rsquo;s documentation on Knowledge distillation</a> <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div>
 </main>
  
 
@@ -89,6 +189,8 @@ type="image/x-icon"/>
 
 
 
+
+<div class="tl fixed list-pages lh-copy" id="contents-list"></div>
 
 
 
@@ -110,6 +212,10 @@ type="image/x-icon"/>
   
 
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<style>.is-active-link::before { background-color: var(--secondary-color); }</style>
 
 
 
@@ -155,10 +261,54 @@ function topFunction() {
 
 
 
+if (document.getElementById("contents-list") !== null && document.getElementsByClassName("post-content").length !== 0) { 
+  tocbot.init({
+    
+    tocSelector: '#contents-list',
+    
+    contentSelector: '.post-content',
+    
+    headingSelector: 'h1, h2, h3',
+  });
+}
+
 
 </script>
 
 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+<script>
+  renderMathInElement(document.body,
+    {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+        ]
+    }
+  );
+
+  var inlineMathArray = document.querySelectorAll("script[type='math/tex']");
+  for (var i = 0; i < inlineMathArray.length; i++) {
+    var inlineMath = inlineMathArray[i];
+    var tex = inlineMath.innerText || inlineMath.textContent;
+    var replaced = document.createElement("span");
+    replaced.innerHTML = katex.renderToString(tex, {displayMode: false});
+    inlineMath.parentNode.replaceChild(replaced, inlineMath);
+  }
+
+  var displayMathArray = document.querySelectorAll("script[type='math/tex; mode=display']");
+  for (var i = 0; i < displayMathArray.length; i++) {
+    var displayMath = displayMathArray[i];
+    var tex = displayMath.innerHTML;
+    var replaced = document.createElement("span");
+    replaced.innerHTML = katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+    displayMath.parentNode.replaceChild(replaced, displayMath);
+  }
+</script>
 
 
 </body>

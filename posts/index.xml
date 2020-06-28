@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Ramesh&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2020 13:37:07 -0400</lastBuildDate>
     
 	<atom:link href="http://RameshArvind.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Understanding Knowledge Distillation</title>
+      <link>http://RameshArvind.github.io/posts/deep-learning/knowledge-distillation/</link>
+      <pubDate>Thu, 14 May 2020 13:37:07 -0400</pubDate>
+      
+      <guid>http://RameshArvind.github.io/posts/deep-learning/knowledge-distillation/</guid>
+      <description>Core Idea   General Architecture of a knowledge distillation setup   The concept provides us an answer to the question if a smaller model can be made to perform as good as a large model on classification tasks . This question can be rephrased to distilling the knowledge of a larger model into a smaller model.
+The approach is outlined by the paper titled &amp;ldquo;Distilling the Knowledge in a Neural Network&amp;rdquo; 1.</description>
+    </item>
     
     <item>
       <title>What do I consume on the internet</title>
@@ -44,7 +54,7 @@ I made an account on facebook and played the games on it cause it was all the ra
     </item>
     
     <item>
-      <title>Georgia Tech&#39;s OMSCS Program</title>
+      <title>Georgia Tech&#39;s Online Masters Program</title>
       <link>http://RameshArvind.github.io/posts/personal/what-is-omscs/</link>
       <pubDate>Wed, 02 Jan 2019 07:31:49 +0530</pubDate>
       
